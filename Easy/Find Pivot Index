@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums){
+        int pivot;
+        vector<int> leftsum;
+        int sum=0;
+        leftsum.push_back(0);
+        for(int i=0; i<nums.size(); i++){
+            sum+=nums[i];
+            leftsum.push_back(sum);
+        }
+        int total = leftsum[leftsum.size()-1];
+        for(int i=0; i<nums.size(); i++){
+            if(leftsum[i] == total - leftsum[i]-nums[i])
+                return i;
+        }
+        return -1;
+    }
+};
