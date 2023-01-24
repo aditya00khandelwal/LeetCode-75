@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        unordered_map<char, int> palindrome;
+        for(int i=0; i<s.size(); i++)
+            palindrome[s[i]]++;
+        int size=0;
+        int odd_occ=0;
+        for(auto i=palindrome.begin(); i!=palindrome.end(); i++){
+            if(i->second % 2==0)
+                size+=i->second;
+            else{
+                size+= i->second -1;
+                odd_occ=1;
+            }
+        }
+        return size + odd_occ;
+    }
+};
