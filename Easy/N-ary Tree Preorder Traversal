@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> preorder(Node* root) {
+        vector<int> res;
+        if(root==NULL)
+            return res;
+        stack<Node*> s;
+        s.push(root);
+        while(!s.empty()){
+            Node *curr=s.top();
+            s.pop();
+            res.push_back(curr->val);
+            for(int i=curr->children.size(); i>0; i--){
+                s.push(curr->children[i-1]);
+            }
+        }
+        return res;
+    }
+};
