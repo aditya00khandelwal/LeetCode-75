@@ -1,3 +1,5 @@
+//Method 1
+
 class Solution {
 public:
     vector<int> preorder(Node* root) {
@@ -15,5 +17,22 @@ public:
             }
         }
         return res;
+    }
+};
+
+// Method 2
+class Solution {
+public:
+    vector<int> preorder(Node* root) {
+        vector<int> res;
+        if(root == NULL) return res;
+        func(root, res);
+        return res;
+    }
+    void func(Node *root, vector<int> &res){
+        res.push_back(root->val);
+        for(int i=0; i<root->children.size(); i++){
+            func(root->children[i], res);
+        }
     }
 };
